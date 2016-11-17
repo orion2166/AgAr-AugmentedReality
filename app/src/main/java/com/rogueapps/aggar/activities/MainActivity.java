@@ -1,4 +1,4 @@
-package com.rogueapps.aggar;
+package com.rogueapps.aggar.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,8 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.beyondar.android.fragment.BeyondarFragmentSupport;
+import com.beyondar.android.world.World;
+import com.rogueapps.aggar.R;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    BeyondarFragmentSupport mBeyondarFragment;
+    World world;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +29,21 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        configureARModule();
+        setSidebar(toolbar);
 
+
+    }
+
+    private void configureARModule() {
+        mBeyondarFragment = (BeyondarFragmentSupport) getSupportFragmentManager().findFragmentById(R.id.beyondarFragment);
+        world = new World(this);
+        world.setDefaultBitmap(R.drawable.vulpix, World.LIST_TYPE_DEFAULT);
+        mBeyondarFragment.setMaxDistanceToRender(30);
+        mBeyondarFragment.setWorld(world);
+    }
+
+    private void setSidebar(Toolbar toolbar) {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
