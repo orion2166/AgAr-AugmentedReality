@@ -1,5 +1,9 @@
-package com.rogueapps.aggar;
+package com.rogueapps.aggar.activities;
 
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,9 +16,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.beyondar.android.fragment.BeyondarFragmentSupport;
+import com.beyondar.android.util.location.BeyondarLocationManager;
+import com.beyondar.android.world.World;
+import com.rogueapps.aggar.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    /*-------Variables--------*/
+    private Location currentLocation;
+    private MiLocationListener milocListener;
+    private BeyondarFragmentSupport mBeyondarFragment;
+    private World world;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +39,27 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        configureARModule();
+        configureLocationModule();
+        setSidebar(toolbar);
+    }
 
+    private void configureARModule() {
+        mBeyondarFragment = (BeyondarFragmentSupport) getSupportFragmentManager().findFragmentById(R.id.beyondarFragment);
+        world = new World(this);
+        world.setDefaultBitmap(R.drawable.vulpix, World.LIST_TYPE_DEFAULT);
+        mBeyondarFragment.setMaxDistanceToRender(30);
+        mBeyondarFragment.setWorld(world);
+    }
+
+    private void configureLocationModule() {
+        milocListener = new MiLocationListener();
+        BeyondarLocationManager.setLocationManager((LocationManager) getSystemService(Context.LOCATION_SERVICE));
+        BeyondarLocationManager.addWorldLocationUpdate(world);
+        BeyondarLocationManager.addLocationListener(milocListener);
+    }
+
+    private void setSidebar(Toolbar toolbar) {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,5 +134,27 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /*-----------Location Data--------------*/
+    private class MiLocationListener implements LocationListener {
+
+        @Override
+        public void onLocationChanged(Location newLocation) {
+            currentLocation = newLocation;
+        }
+
+        public void onProviderDisabled(String provider) {
+            Toast.makeText(getApplicationContext(), "Gps Desactivado",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        public void onProviderEnabled(String provider) {
+            Toast.makeText(getApplicationContext(), "Gps Activo",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
     }
 }
