@@ -5,9 +5,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +20,7 @@ import com.beyondar.android.fragment.BeyondarFragmentSupport;
 import com.beyondar.android.util.location.BeyondarLocationManager;
 import com.beyondar.android.world.World;
 import com.rogueapps.aggar.R;
+import com.rogueapps.aggar.controllers.GeoObjectController;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,14 +39,15 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         configureARModule();
         configureLocationModule();
-        setSidebar(toolbar);
+        configureSidebar(toolbar);
     }
 
     private void configureARModule() {
         mBeyondarFragment = (BeyondarFragmentSupport) getSupportFragmentManager().findFragmentById(R.id.beyondarFragment);
+        mBeyondarFragment.setMaxDistanceToRender(50);
         world = new World(this);
         world.setDefaultBitmap(R.drawable.vulpix, World.LIST_TYPE_DEFAULT);
-        mBeyondarFragment.setMaxDistanceToRender(30);
+        world = GeoObjectController.fillWorld(world);
         mBeyondarFragment.setWorld(world);
     }
 
@@ -59,16 +58,7 @@ public class MainActivity extends AppCompatActivity
         BeyondarLocationManager.addLocationListener(milocListener);
     }
 
-    private void setSidebar(Toolbar toolbar) {
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+    private void configureSidebar(Toolbar toolbar) {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -77,6 +67,18 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        BeyondarLocationManager.disable();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BeyondarLocationManager.enable();
     }
 
     @Override
@@ -115,22 +117,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -142,6 +128,9 @@ public class MainActivity extends AppCompatActivity
         @Override
         public void onLocationChanged(Location newLocation) {
             currentLocation = newLocation;
+            TextView view = (TextView) findViewById(R.id.textView);
+            view.setText("Lat = " + currentLocation.getLatitude()
+                            + "\nLongitude = " + currentLocation.getLongitude());
         }
 
         public void onProviderDisabled(String provider) {
