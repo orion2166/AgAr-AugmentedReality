@@ -1016,7 +1016,6 @@ public class ARRenderer implements GLSurfaceView.Renderer, BeyondarSensorListene
 		// Clean up
 		bitmap.recycle();
 		return new Texture(tmpTexture[0]).setImageSize(imageWidth, imageHeight);
-
 	}
 
 	@Override
