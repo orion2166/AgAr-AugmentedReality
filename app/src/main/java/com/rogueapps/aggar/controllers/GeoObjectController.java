@@ -34,7 +34,7 @@ public class GeoObjectController {
         GeoObject object8 = GeoObjectController.createGeoObject(8L,30.612932,-96.339799,"Event 3", R.drawable.rudderevent3);
         GeoObject object9 = GeoObjectController.createGeoObject(9L,30.612374,-96.340634,"Event 4", R.drawable.mscevent1);
         GeoObject object10 = GeoObjectController.createGeoObject(10L,30.612360,-96.340666,"Event 5", R.drawable.mscevent2);
-        GeoObject object11 = GeoObjectController.createGeoObject(11L,30.612063, -96.341221,"test", R.drawable.buildingicon);
+        GeoObject object11 = GeoObjectController.createGeoObject(11L,30.620543,-96.341800,"test", R.drawable.msc);
 
         world.addBeyondarObject(object);
         world.addBeyondarObject(object1);
