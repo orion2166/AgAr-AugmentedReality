@@ -165,29 +165,30 @@ public class MainActivity extends AppCompatActivity
                 imageView.setImageDrawable(getResources().getDrawable(R.drawable.teaguepic));
                 break;
             case 6:
+            case 12:
                 view.setText("");
                 desc.setText("");
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.rudderevnt1));
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.rudderevntpic1));
                 break;
             case 7:
                 view.setText("");
                 desc.setText("");
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.rudderevnt2));
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.rudderevntpic2));
                 break;
             case 8:
                 view.setText("");
                 desc.setText("");
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.rudderevent3));
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ruddereventpic3));
                 break;
             case 9:
                 view.setText("");
                 desc.setText("");
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.mscevent1));
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.msceventpic1));
                 break;
             case 10:
                 view.setText("");
                 desc.setText("");
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.mscevent2));
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.msceventpic2));
                 break;
             default:
                 view.setText("");
