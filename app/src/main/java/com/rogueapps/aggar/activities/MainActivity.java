@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 
     private void configureARModule() {
         mBeyondarFragment = (BeyondarFragmentSupport) getSupportFragmentManager().findFragmentById(R.id.beyondarFragment);
-        mBeyondarFragment.setMaxDistanceToRender(50);
+        mBeyondarFragment.setMaxDistanceToRender(100);
         mBeyondarFragment.setOnClickBeyondarObjectListener(this);
         world = new World(this);
         world.setDefaultBitmap(R.drawable.vulpix, World.LIST_TYPE_DEFAULT);
