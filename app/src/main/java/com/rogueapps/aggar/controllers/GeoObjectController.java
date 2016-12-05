@@ -24,10 +24,10 @@ public class GeoObjectController {
     public static World fillWorld(World world){
         GeoObject object = GeoObjectController.createGeoObject(0L,30.612543, -96.340518,"MSC", R.drawable.msc);
         GeoObject object1 = GeoObjectController.createGeoObject(1L,30.611939, -96.340210,"12 Man Statue", R.drawable.manst);
-        GeoObject object2 = GeoObjectController.createGeoObject(2L,30.612232, -96.339673,"Koldus", R.drawable.koldus);
+        GeoObject object2 = GeoObjectController.createGeoObject(2L,30.612232, -96.339673,"Koldus", R.drawable.koldus2);
         GeoObject object3 = GeoObjectController.createGeoObject(3L,30.611450, -96.340349,"Kyle Field", R.drawable.kyle);
         GeoObject object4 = GeoObjectController.createGeoObject(4L,30.612731, -96.340248,"Rudder Tower", R.drawable.ruddertower);
-        GeoObject object5 = GeoObjectController.createGeoObject(5L,30.611461, -96.340360,"Kyle Services", R.drawable.kyleservices);
+//        GeoObject object5 = GeoObjectController.createGeoObject(5L,30.611461, -96.340360,"Kyle Services", R.drawable.kyleservices);
         GeoObject object6 = GeoObjectController.createGeoObject(6L,30.612626, -96.340061,"Event 1", R.drawable.rudderevnt1);
         GeoObject object7 = GeoObjectController.createGeoObject(7L,30.612926,-96.339811,"Event 2", R.drawable.rudderevnt2);
         GeoObject object8 = GeoObjectController.createGeoObject(8L,30.612932,-96.339799,"Event 3", R.drawable.rudderevent3);
@@ -47,7 +47,7 @@ public class GeoObjectController {
         world.addBeyondarObject(object2);
         world.addBeyondarObject(object3);
         world.addBeyondarObject(object4);
-        world.addBeyondarObject(object5);
+//        world.addBeyondarObject(object5);
         world.addBeyondarObject(object6);
         world.addBeyondarObject(object7);
         world.addBeyondarObject(object8);
