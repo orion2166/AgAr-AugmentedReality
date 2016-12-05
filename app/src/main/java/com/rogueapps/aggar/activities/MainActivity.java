@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity
             case 8:
                 view.setText("");
                 desc.setText("");
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ruddereventpic3));
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.rudderevent3));
                 break;
             case 9:
                 view.setText("");
