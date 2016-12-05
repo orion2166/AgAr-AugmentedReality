@@ -127,8 +127,7 @@ public class MainActivity extends AppCompatActivity
         ImageView imageView = (ImageView)findViewById(R.id.imageView);
         switch((int)touchedObject.getId()){
             case 0:
-            case 11:
-                view.setText("MSC");
+                view.setText("Memorial Student Center");
                 desc.setText("Popularly known as \"The Living Room of Texas A&M\", the Memorial Student Center (MSC) has been a living memorial, a living room, and a living tradition at Texas A&M University. Dedicated on Muster Day (April 21) in 1951, the MSC was originally dedicated to those Aggies who gave their lives during World Wars I and II, but was later rededicated to all Aggies who have given or will give their lives in wartime.[85] Because the building and grounds are a memorial, those entering the MSC are asked to \"uncover\" (remove their hats) and not walk on the surrounding grass lawns.[86]\n" +
                         "On the main floor of the MSC is the Flagroom, a large, flag-lined room which students use for meetings, visiting, napping, and studying. The MSC also contains a bookstore, a bank, three art galleries, three dining facilities, and two ballrooms, one of which named after Robert Gates. Additionally, the MSC contains many meeting rooms and is the home of numerous student committees \"that provide an array of educational, cultural, recreational and entertainment programs for the Texas A&M community.\"[85]\n" +
                         "In 2007, the Aggie student body voted for $122 million renovations to the Memorial Student Center, allowing it to become fully compliant with both fire code and the Americans with Disabilities Act. The project began in the summer of 2009, requiring the building to remain closed due to the renovations.[87] The renovations increased the size of the building to accommodate the growing school population, and make more efficient use of existing space.[88][89] The MSC reopened on Muster Day, April 21, 2012, 61 years after its original opening.");
@@ -159,13 +158,11 @@ public class MainActivity extends AppCompatActivity
                 imageView.setImageDrawable(getResources().getDrawable(R.drawable.rudderpic));
                 break;
             case 5:
-                view.setText("Teague building");
-                desc.setText("The center was built in 1967, and is located on Lamar Street, south of the Administration Building. In front of the building is the Exploration in Space sculpture. The center was partly funded by a $1 million grant from NASA. The nuclear engineering department has several offices, classrooms and laboratories in the yellow-brick building. It also houses the statistics department.\n" +
-                        "The building is named after Olin E. “Tiger” Teague, class of 1932. Teague was a World War II veteran who participated in the D-Day Normandy invasion. According to the Texas State Historical Association, he is the second most-decorated U.S. combat soldier of WWII. During his 32 years in the U.S. House of Representatives, he was a champion for veterans’ rights and the space program.");
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.teaguepic));
+                view.setText("Stadium");
+                desc.setText("Located at Kyle Field");
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.kyleservices));
                 break;
             case 6:
-            case 12:
                 view.setText("");
                 desc.setText("");
                 imageView.setImageDrawable(getResources().getDrawable(R.drawable.rudderevntpic1));
@@ -189,6 +186,26 @@ public class MainActivity extends AppCompatActivity
                 view.setText("");
                 desc.setText("");
                 imageView.setImageDrawable(getResources().getDrawable(R.drawable.msceventpic2));
+                break;
+            case 11:
+                view.setText("Restroom");
+                desc.setText("Located at Rudder Tower");
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.restroom));
+                break;
+            case 12:
+                view.setText("Restaurants");
+                desc.setText("Located at Memorial Student Center");
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.resturant));
+                break;
+            case 13:
+                view.setText("Theater");
+                desc.setText("Located at Rudder");
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.theater));
+                break;
+            case 14:
+                view.setText("Restroom");
+                desc.setText("Located at Memorial Student Center");
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.restroom));
                 break;
             default:
                 view.setText("");
